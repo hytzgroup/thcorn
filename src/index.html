@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parser</title>
+    <script src="./parser.js"></script>
+</head>
+<body>
+    <script>
+        var ss = "(add 2 (subtract 5 3))";
+        console.log(tokenizer(ss));
+        var bb = parser(tokenizer(ss));
+        traverser(bb,{
+            Program:{enter:() =>{},exit:() =>{}},
+            CallExpression:{enter:() =>{},exit:() =>{}},
+            NumberLiteral:{enter:() =>{},exit:() =>{}}
+        });
+        console.log(JSON.stringify(bb));
+        var cc = transformer(bb);
+        console.log(cc);
+    </script>
+</body>
+</html>
